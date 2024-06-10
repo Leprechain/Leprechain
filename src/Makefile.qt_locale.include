@@ -1,0 +1,22 @@
+QT_TS = \
+  qt/locale/leprechain_ar.ts \
+  qt/locale/leprechain_bg.ts \
+  qt/locale/leprechain_de.ts \
+  qt/locale/leprechain_en.ts \
+  qt/locale/leprechain_es.ts \
+  qt/locale/leprechain_fi.ts \
+  qt/locale/leprechain_fr.ts \
+  qt/locale/leprechain_it.ts \
+  qt/locale/leprechain_ja.ts \
+  qt/locale/leprechain_ko.ts \
+  qt/locale/leprechain_nl.ts \
+  qt/locale/leprechain_pl.ts \
+  qt/locale/leprechain_pt.ts \
+  qt/locale/leprechain_ro.ts \
+  qt/locale/leprechain_ru.ts \
+  qt/locale/leprechain_sk.ts \
+  qt/locale/leprechain_th.ts \
+  qt/locale/leprechain_tr.ts \
+  qt/locale/leprechain_vi.ts \
+  qt/locale/leprechain_zh_CN.ts \
+  qt/locale/leprechain_zh_TW.ts

@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[leprechain.leprechain_ents]
+file_filter = src/qt/locale/leprechain_<lang>.ts
+source_file = src/qt/locale/leprechain_en.xlf
+source_lang = en

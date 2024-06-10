@@ -1,0 +1,45 @@
+# syntax=docker/dockerfile:1.3
+FROM ubuntu:focal
+LABEL maintainer="Leprechain Developers <dev@leprechain.org>"
+LABEL description="Dockerised Leprechain"
+
+ARG USER_ID
+ARG GROUP_ID
+ARG TAG
+
+ENV HOME /home/leprechain
+
+# add user with specified (or default) user/group ids
+ENV USER_ID ${USER_ID:-1000}
+ENV GROUP_ID ${GROUP_ID:-1000}
+RUN groupadd -g ${GROUP_ID} leprechain && \
+    useradd -u ${USER_ID} -g leprechain -s /bin/bash -m -d /home/leprechain leprechain  && \
+    mkdir /home/leprechain/.leprechain && \
+    chown ${USER_ID}:${GROUP_ID} -R /home/leprechain
+
+RUN apt-get update && \
+    apt-get -y install --no-install-recommends \
+    wget \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY leprechain-binaries/${TAG}/leprechain* /home/leprechain
+
+RUN mach=$(uname -m) \
+      && case $mach in aarch64) arch="aarch64-linux-gnu"; ;; x86_64) arch="x86_64-linux-gnu"; ;;  *) echo "ERROR: Machine type $mach not supported."; ;; esac \
+      && cd /home/leprechain \
+      && tar xvzf leprechain*$arch.tar.gz \
+      && echo $(ls -1 /home/leprechain) \
+      && cp leprechain-*/bin/* /usr/local/bin \
+      && rm -rf leprechain*
+
+USER leprechain
+
+VOLUME ["/home/leprechain"]
+
+COPY leprechain/contrib/containers/deploy/docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+EXPOSE 17949 9999 27949 27950
+
+WORKDIR /home/leprechain

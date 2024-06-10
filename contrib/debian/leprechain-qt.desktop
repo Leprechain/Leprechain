@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Leprechain Core
+Comment=Leprechain P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Leprechain peer-to-peer Netzwerk
+Comment[fr]=Leprechain, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Leprechain, eşten eşe kriptografik sanal para birimi
+Exec=leprechain-qt %u
+Terminal=false
+Type=Application
+Icon=leprechain128
+MimeType=x-scheme-handler/leprechain;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=Leprechain-qt
